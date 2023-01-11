@@ -26,7 +26,7 @@ const Home = () => {
       );
     };
 
-    const  products = useContext(ProductContext)
+    const  {products} = useContext(ProductContext)
 
   return (
     <div>

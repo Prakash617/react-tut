@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ProductQuantity from '../ProductQuantity'
 
-const Cart = () => {
-  const [quantity,setQuantity]= useState(0)
+
+const Cart = ({cartItem}) => {
+  const [quantity,setQuantity]= useState(1)
+  const [total,setTotal]= useState(1)
+
   return (
  <>
  <div className="card-body d-flex flex-row justify-content-evenly align-items-center">
             <div>
               <img
-                src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+                src={cartItem.img}
                 alt=""
                 className="img-fluid"
                 style={{ borderRadius: "100%", height: "3rem", weight: "3rem" }}
@@ -16,12 +19,12 @@ const Cart = () => {
               />
             </div>
             <div>
-              <p>title</p>
-              <p>type(large)</p>
-              <ProductQuantity quantity = {quantity} setQuantity = {setQuantity}/>
+              <p>{cartItem.title}</p>
+              <p>quantity:{cartItem.quantity}</p>
+              <ProductQuantity  quantity = {quantity} setQuantity = {setQuantity}/>
 
             </div>
-            <div>$250</div>
+            <div>{cartItem.price * quantity}</div>
           </div>
           <hr />
  </>

@@ -36,7 +36,7 @@ const About = () => {
 
 // }, [])
 
-const {products,isloading}= useContext(ProductContext)
+const {products, loading, setLoading}= useContext(ProductContext)
 
 
   // const user  = useContext(ProductContext)
@@ -46,8 +46,8 @@ const {products,isloading}= useContext(ProductContext)
     //     <h1>{user}</h1>
     //   } }
     <div>
-      <h1>Flash Sale---:</h1>
-      <h1>{isloading}</h1>
+      <h1 onClick={()=>setLoading('loading')}>Flash Sale---:</h1>
+      <h1>{loading}</h1>
       <div className="d-flex flex-wrap gap-5 justify-content-center">
         {/* {products.map((product, index) => (
           <ProductCard key={index} product={product[0]} />

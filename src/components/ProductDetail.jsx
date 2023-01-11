@@ -9,30 +9,37 @@ const ProductDetail = () => {
   const params = useParams();
 
   // const [products, setProduct] = useState([])
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
   // console.log(params);
   
   
-  const  products = useContext(ProductContext)
+  const {products,cart,setCart} = useContext(ProductContext)
+  
   const thisProduct = products.find(
     (prod) => prod.id === params.id
 
   );
+  // const [cart, setCart] = useState([])
   const handleSubmit=(e)=>{
     e.preventDefault();
-    // cartData =[...cartData ]
-    // setProduct([...products,thisProduct])
-    // console.log(products);
+    console.log('helloworld');
+    thisProduct['quantity'] = quantity;
+    // const listProduct =[...[thisProduct]];
+    
+    // setCart([1,2,3,4,5,6,7,8])
+    setCart([...cart,...[thisProduct]])
+    console.log("cart",cart)
 
   }
 
   return (
     <>
       <div className="card d-flex flex-md-row w-100 flex-col justify-content-around">
+       
         <div className=" w-sm-50 mx-auto">
           <img src={thisProduct.img} className="card-img w-80 " alt="..." />
         </div>
-        <form className="  w-50" onSubmit={(e)=>handleSubmit(e)}>
+        <form className=" w-50" onSubmit={(e)=>handleSubmit(e)}>
           <h5 className="">{thisProduct.title}</h5>
           <p>{thisProduct.description} {quantity}</p>
 

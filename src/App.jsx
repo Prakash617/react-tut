@@ -13,6 +13,7 @@ import { createContext, useEffect, useState } from "react";
 import { getProducts } from "./helper/AxiosInstance";
 // import { useEffect } from "react";
 // import getProducts from "./helper/AxiosInstance";
+// import ProductProvider from "./components/UseContext/ProductContext";
 
 
 export const ProductContext = createContext();
@@ -20,6 +21,7 @@ function App() {
 
   const [products,setProducts]=useState([])
   const [loading, setLoading] = useState('true');
+  const [cart, setCart] = useState([]);
   // const [product,setProduct]=useState({})
 useEffect(()=>{
 
@@ -28,7 +30,7 @@ useEffect(()=>{
     try {
       const data = await getProducts()
       console.log('data',data);
-      setProducts( [...products,...data] )
+      setProducts([...data])
       console.log('product',products);
       // setLoading(false);
     } catch (error) {
@@ -44,7 +46,7 @@ useEffect(()=>{
   return (
     <>
    
-   <ProductContext.Provider value={{products,isloading:loading} }>
+   <ProductContext.Provider value={{products ,loading ,setLoading,cart ,setCart } }>
       <BrowserRouter>
       <Navbar />
         <Routes>
