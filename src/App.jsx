@@ -37,9 +37,7 @@ useEffect(()=>{
       console.error(error);
     }
   }
-  getUser();
-
-},[])
+  getUser();},[])
 
 
 
