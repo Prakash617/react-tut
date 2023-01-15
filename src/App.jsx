@@ -22,6 +22,7 @@ function App() {
   const [products,setProducts]=useState([])
   const [loading, setLoading] = useState('true');
   const [cart, setCart] = useState([]);
+  const [carttoal, setCartTotal] = useState(0);
   // const [product,setProduct]=useState({})
 useEffect(()=>{
 

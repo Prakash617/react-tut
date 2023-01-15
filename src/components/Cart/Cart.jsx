@@ -3,8 +3,9 @@ import ProductQuantity from '../ProductQuantity'
 
 
 const Cart = ({cartItem}) => {
-  const [quantity,setQuantity]= useState(1)
-  const [total,setTotal]= useState(1)
+  const [quantity,setQuantity]= useState(cartItem.quantity)
+
+
 
   return (
  <>
@@ -19,12 +20,17 @@ const Cart = ({cartItem}) => {
               />
             </div>
             <div>
+              <p>{cartItem.id}</p>
               <p>{cartItem.title}</p>
               <p>quantity:{cartItem.quantity}</p>
-              <ProductQuantity  quantity = {quantity} setQuantity = {setQuantity}/>
+
+              <ProductQuantity  cartItemId={cartItem.id} quantity = {quantity} setQuantity = {setQuantity}/>
+          
 
             </div>
+            {/* {setCarttotal(carttotal+(cartItem.price * quantity))} */}
             <div>{cartItem.price * quantity}</div>
+            {/* <div>{total}</div> */}
           </div>
           <hr />
  </>

@@ -1,52 +1,36 @@
-import React, { useContext } from 'react'
-import Card from "../components/Card";
-import Button from '../components/common/Button';
-import { ProductContext } from '../App';
+import React, { useEffect, useRef, useState } from 'react'
+import UseRef from './UseRef'
+import PreviousStateUseRef from './PreviousStateUseRef';
+
+
 
 
 
 const Home = () => {
-    const myArray = ["apple", "banana", "orange"];
-    const loading = true;
-    // const myList = myArray.map((item) => <p>{item}</p>)
-    // const para => <p>para</p>
-    const vehicles = ["mustang", "f-150", "expedition"];
-    const [car, truck, suv] = vehicles;
-    console.log(car, truck, suv);
-    function Welcome(props) {
-      return <h1>Hello, {props.name}</h1>;
-    }
-  
-    const Prakash = () => <p>I am superUSER</p>;
-    const Spinner = () => {
-      return (
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      );
-    };
+  const [inputValue, setInputValue] = useState("");
+  const count = useRef(0);
 
-    const  {products} = useContext(ProductContext)
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
 
   return (
-    <div>
+  
+    <>
+          <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+        <h1>Render Count: {count.current}</h1>
+        <hr />
+        <UseRef/>
 
-        <p style={{ color: "red", width: 4 }}> hello world </p>
-      <p> hello world </p>
-      {myArray.map((item) => (
-        <p key={item}>{item}</p>
-      ))}
-      <Welcome name={"Prakash"} />
-      <Prakash />
-      <Card />
-      {myArray.map((item,i) => 
-        <Button item={item} key={i} />
-      )}
-     
-      {loading ? <Spinner /> : null}
-      <br />
-      {products.map((product, index) => <h1 key={index}>{product.title}</h1>)}
-      </div>
+        <hr />
+        <PreviousStateUseRef/>
+
+    </>
+
   )
 }
 

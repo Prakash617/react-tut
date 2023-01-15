@@ -45,7 +45,7 @@ const ProductDetail = () => {
 
           <p className=" text-danger">{thisProduct.amount}</p>
 
-          <ProductQuantity quantity = {quantity} setQuantity = {setQuantity}/>
+          <ProductQuantity cartItemId={thisProduct.id} quantity = {quantity} setQuantity = {setQuantity}/>
           <div className="text-center ">
 
           <input type="submit" className="btn btn-warning ms text-white " value={'Add to cart'}/>
